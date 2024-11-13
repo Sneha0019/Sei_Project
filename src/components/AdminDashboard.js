@@ -1,30 +1,9 @@
-import { React, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import Sidebar from './Sidebar';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts'; // Importing Recharts components
+import { LineChart, Line, PieChart, Pie, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts'; // Importing Recharts components
 
-const SellerDashboard = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token'); // Get the token from localStorage
-
-    console.log("AUTH", token);
-
-    if (!token) {
-      // If the token doesn't exist, navigate to login page
-      navigate('/login');
-    }
-    
-    // You can add additional token validation here if necessary, e.g., using JWT decoding libraries
-    // const isValidToken = verifyToken(token); // Example function to verify token
-    // if (!isValidToken) {
-    //   navigate('/login');
-    // }
-
-  }, [navigate]);
-
-
+const AdminDashboard = () => {
+  
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
   const contentStyle = {
@@ -55,14 +34,16 @@ const SellerDashboard = () => {
   return (
     <div style={containerStyle}>
       {/* Sidebar */}
-      <Sidebar />
+      
+       <Sidebar/>
 
       {/* Content Area */}
       <div style={contentStyle}>
-        <h1>Welcome to the Seller Dashboard</h1>
+        <h1>Welcome to Admin Dashboard!</h1>
+
       </div>
     </div>
   );
 };
 
-export default SellerDashboard;
+export default AdminDashboard;

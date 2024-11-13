@@ -33,6 +33,10 @@ const UserSchema = new mongoose.Schema({
     aadharCardLink:{
         type:String
     },
+    validSeller:{
+        type:String,
+        default:false
+    },
     date:{
         type: Date,
         default:Date.now

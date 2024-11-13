@@ -97,25 +97,45 @@ const ProductState = (props) => {
   }
 
    //--GET ALL BRACELET----
-   const getProductBag = async ()=>{
+  //  const getProductBag = async ()=>{
 
-    try{
-      const response = await fetch(`${host}/api/products/bag`, {
-          method: "GET",
-          headers:{
-              "content-Type" : "application/json",
-          },
-      });
+  //   try{
+  //     const response = await fetch(`${host}/api/products/bag`, {
+  //         method: "GET",
+  //         headers:{
+  //             "content-Type" : "application/json",
+  //         },
+  //     });
 
-   const data = await response.json();
-    setProducts(data.product);
+  //  const data = await response.json();
+  //  console.log("in frontend", data);
+  //   setProducts(data.product);
   
 
-  }catch(error){
-      console.log("error in fetching", error);
+  // }catch(error){
+  //     console.log("error in fetching", error);
 
-  }
+  // }
 
+  // }
+
+  const getProductBag = async()=>{
+    console.log("going in backend");
+    try{
+        const response = await fetch(`${host}/api/products/bag`, {
+            method: "GET",
+            headers:{
+                "content-Type" : "application/json",
+            },
+        });
+
+  const data = await response.json();
+   setProducts(data.product);
+    
+    }catch(error){
+      return console.log("error in fetching", error);
+
+    }
   }
 
 
@@ -130,7 +150,9 @@ const ProductState = (props) => {
           },
       });
 
+
    const data = await response.json();
+   console.log("in frontend")
     setProducts(data.product);
   
 

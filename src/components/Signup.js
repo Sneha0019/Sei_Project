@@ -27,8 +27,7 @@ const Signup = (props) => {
       ? { name, email, password, role, phone, address, experience, portfolio, aadharCardLink }
       : { name, email, password, role };
 
-
-      console.log("bodyData..", bodyData);
+    console.log("bodyData..", bodyData);
 
     const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
       method: "POST",
@@ -52,6 +51,12 @@ const Signup = (props) => {
       localStorage.setItem("username", json.username);
       localStorage.setItem("role", json.role);
       navigate("/sellerDashboard");
+    } else if (json.success && role === "admin") {
+      // If admin is signing up
+      localStorage.setItem("token", json.authToken);
+      localStorage.setItem("username", json.username);
+      localStorage.setItem("role", json.role);
+      navigate("/adminDashboard");
     } else {
       alert("Please enter proper credentials");
     }
@@ -85,6 +90,7 @@ const Signup = (props) => {
             <select className="form-select" onChange={onChange} id="role" name="role" value={credentials.role}>
               <option value="customer">customer</option>
               <option value="seller">seller</option>
+              <option value="admin">admin</option> {/* Added admin option */}
             </select>
           </div>
 

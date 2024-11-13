@@ -21,6 +21,7 @@ app.use("/api/auth/", require("./routes/auth"))
 app.use("/api/products", require("./routes/products"))
 app.use("/api/orders", require("./routes/orders"))
 app.use("/api/wishlists", require("./routes/wishlists"))
+app.use("/api/reports", require("./routes/reports"))
 
 //routings
 

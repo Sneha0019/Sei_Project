@@ -7,7 +7,7 @@ import Spinner from './spinner';
 
 const Product = (props) => {
   const {category} = props;
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const location = useLocation()
   const context = useContext(productContext);
   console.log(context);
@@ -19,30 +19,28 @@ const Product = (props) => {
   const query = searchParams.get('search');
 
 
-  useEffect(()=>{
-    setLoading(true);
-    if(location.pathname==="/festive" || category==="Festive"|| query==="Festive"){
-    getProductFestive();
-    }else if(location.pathname==="/saree" || category==="Saree" || query==="Saree"){
-      getProductSaree();
-    }else if(location.pathname==="/dupatta" || category==="Dupatta"|| query==="Dupatta"){
-      getProductDupatta();
-    }else if(location.pathname==="/bag" || category==='Bag' || query==="Bag" ){
-      getProductBag();
-    }else if(location.pathname==="/jewellery" || category==="Jewellery" || query==="Jewellery"){
-      getProductJewellery();
-    }
-    // else if(location.pathname==="/necklace" || category==="Necklace" || query==="Necklace"){
-    //   getProductNecklace();
-    // }else if(location.pathname==="/anklets" || category==="Anklet" || query==="Anklet"){
-    //   getProductAnklet();
-    // }
-    else{
-      getProducts()
-    }
-    setLoading(false);
-    //eslint-disable-next-line
-  },[location.pathname]);
+  useEffect(() => {
+    const fetchData = async () => {
+      // setLoading(true);
+      if (location.pathname === "/festive" || category === "Festive" || query === "Festive") {
+        await getProductFestive();
+      } else if (location.pathname === "/saree" || category === "Saree" || query === "Saree") {
+        await getProductSaree();
+      } else if (location.pathname === "/dupatta" || category === "Dupatta" || query === "Dupatta") {
+        await getProductDupatta();
+      } else if (location.pathname === "/bag" || category === 'Bag' || query === "Bag") {
+        await getProductBag();
+      } else if (location.pathname === "/jewellery" || category === "Jewellery" || query === "Jewellery") {
+        await getProductJewellery();
+      } else {
+        await getProducts();
+      }
+      // setLoading(false);
+    };
+    fetchData();
+    // eslint-disable-next-line
+  }, [location.pathname]);
+  
   
 
   return (

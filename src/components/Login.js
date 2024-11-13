@@ -21,24 +21,37 @@ const Login = (props) => {
 
     });
     const json = await response.json();
+
     if(json.success){
-      let name = json.username;
+      let name = json.user.name;
+      const currentUserRole = json.user.role;
       console.log(`name is ${name}`)
+      console.log(json);
       if(name){
         localStorage.setItem('username', name);
-        localStorage.setItem('role', json.currentUserRole);
-        console.log(`set successfully ${json.currentUserRole}`)
+        localStorage.setItem('currentUserRole', currentUserRole);
+        console.log(`set successfully ${currentUserRole}`)
         // localStorage.setItem('token', json.authToken)
         console.log(`set successfully ${name}`);
       }
       //---save the token and redirect
       localStorage.setItem('token', json.authToken)
+      console.log("set token successfully", localStorage.getItem('token'));
 
-      if(json.currentUserRole==="customer"){
+      if(currentUserRole==="customer"){
         navigate("/");
-      }else if(json.currentUserRole==="seller"){
-        navigate("/sellerDashboard");
-      }
+      }else if(currentUserRole==="seller"){
+        if(json.user.validSeller=="true"){
+        localStorage.setItem('sellerId', json.user._id);
+        console.log("selller id", localStorage.getItem('sellerId'));
+        navigate("/manageProducts");
+        }else{
+          alert("Your account is not yet verified.")
+          navigate("/");
+        }     
+      }else if(json.user.role==="admin"){
+          navigate("/manageSellers");
+        }
       
     }else{
       alert("INvalid credentials");

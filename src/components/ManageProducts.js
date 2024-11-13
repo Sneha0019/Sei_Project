@@ -9,6 +9,11 @@ const ManageProducts = () => {
   const [editMode, setEditMode] = useState(false);
   const [editProductId, setEditProductId] = useState(null); // Store the ID of the product being edited
 
+  const sellerId = localStorage.getItem("sellerId");
+
+
+  console.log("selllllller", localStorage.getItem("sellerId"));
+
   const [newProduct, setNewProduct] = useState({
     imageUrl: '',
     productName: '',
@@ -19,6 +24,7 @@ const ManageProducts = () => {
     material: '',
     weight: '',
     dimension: '',
+    sellerId: sellerId
   });
 
   const toggleSidebar = () => {
@@ -86,6 +92,7 @@ const ManageProducts = () => {
       material: '',
       weight: '',
       dimension: '',
+      sellerId: sellerId
     });
     setFormOpen(false);
     setEditMode(false);
@@ -191,13 +198,28 @@ const ManageProducts = () => {
       try {
         const response = await fetch('http://localhost:5000/api/products/fetchallproducts');
         const data = await response.json();
-        setProducts(data.product); // Extract the product array from the response
+  
+        // Get the current seller's sellerId from localStorage
+        const currentSellerId = localStorage.getItem('sellerId');
+  
+        if (!currentSellerId) {
+          console.error('Seller ID not found in localStorage');
+          return;
+        }
+  
+        // Filter products based on the current sellerId
+        const filteredProducts = data.product.filter(product => product.sellerId === sellerId);
+  
+        // Set filtered products to state
+        setProducts(filteredProducts);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
     };
+  
     fetchProducts();
   }, []);
+  
 
   return (
     <div>

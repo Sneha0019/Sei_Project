@@ -18,6 +18,9 @@ import OrderState from "./context/orders/OrderState";
 import WishlistState from "./context/wishlists/WishlistState";
 import Footer from "./components/Footer";
 import ManageProducts from "./components/ManageProducts";
+import AdminDashboard from "./components/AdminDashboard";
+import SellerVerification from "./components/SellerVerification";
+import ReportAdmin from "./components/ReportAdmin";
 
 function App() {
   const bgColor = "#FFE7E7";
@@ -39,13 +42,13 @@ function App() {
                       <div className="container-fluid">
                         <Routes>
                           <Route exact path="/" element={<Home />} />
-                          <Route exact path="/ring" element={<Product />} />
-                          <Route exact path="/earring" element={<Product />} />
-                          <Route exact path="/nosering" element={<Product />} />
-                          <Route exact path="/bracelet" element={<Product />} />
-                          <Route exact path="/bangles" element={<Product />} />
-                          <Route exact path="/necklace" element={<Product />} />
-                          <Route exact path="/anklets" element={<Product />} />
+                          <Route exact path="/bag" element={<Product />} />
+                          <Route exact path="/dupatta" element={<Product />} />
+                          <Route exact path="/saree" element={<Product />} />
+                          <Route exact path="/festive" element={<Product />} />
+                          <Route exact path="/jewellery" element={<Product />} />
+                          {/* <Route exact path="/necklace" element={<Product />} />
+                          <Route exact path="/anklets" element={<Product />} /> */}
                           <Route exact path="/signup" element={<Signup bgColor={bgColor} txtColor={txtColor} />} />
                           <Route exact path="/login" element={<Login bgColor={bgColor} txtColor={txtColor} />} />
                           <Route exact path="/productdetails" element={<ProductDetails bgColor={bgColor} txtColor={txtColor} />} />
@@ -59,6 +62,11 @@ function App() {
                 />
                 <Route exact path="/sellerDashboard" element={<SellerDashboard />} />
                 <Route exact path="/manageProducts" element={<ManageProducts />} />
+
+                <Route exact path="/adminDashboard" element={<AdminDashboard/>} />
+                <Route exact path="/manageSellers" element={<SellerVerification />} />
+                <Route exact path="/manageReports" element={<ReportAdmin />} />
+                
               </Routes>
             </BrowserRouter>
           </ProductState>  

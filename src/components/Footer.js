@@ -8,7 +8,7 @@ const Footer = (props) => {
   <footer className="footer mt-10 py-3 bg-body-tertiary fixed-bottom">
     <div className="container" >
       {/* Update the span with the inline style */}
-      <span style={{color:txtColor}} >© 2023-2024, Jewel.com, Inc. </span>
+      <span style={{color:txtColor}} >© 2024, ArtisaHer.com, Inc. </span>
     </div>
   </footer>
 </div>

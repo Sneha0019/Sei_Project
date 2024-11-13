@@ -34,23 +34,23 @@ const Navbar = (props) => {
   };
 
   // Handle Seller Dashboard Navigation
-  const handleClickForSeller = () => {
-    let currentUserRole = localStorage.getItem('role');
-    console.log("current role is ", currentUserRole);
-    if (currentUserRole === "seller") {
-      console.log("going to seller dashboard");
-      navigate("/sellerDashboard"); // Navigate to Seller Dashboard
-    }else{
-      navigate("/");
-    }
-  };
+ // Handle Seller Dashboard Navigation
+const handleClickForSeller = () => {
+  const currentUserRole = localStorage.getItem('role'); // Check stored key here
+  if (currentUserRole === "seller") {
+    navigate("/manageProducts"); // Navigate to Seller Dashboard
+  } else {
+    navigate("/"); // Redirect elsewhere if not a seller
+  }
+};
+
 
   return (
     <>
       <nav className="navbar navbar-expand-lg p-3" style={{ padding: 0, margin: 0 }}>
         <div className="container-fluid">
           <Link className="navbar-brand" to="/" style={{ color: txtColor }}>
-            jEWEL
+            <big>AritsaHer</big>
           </Link>
           <button
             className="navbar-toggler"
@@ -99,7 +99,7 @@ const Navbar = (props) => {
                   to="/saree"
                   style={{
                     color: txtColor,
-                    borderBottom: location.pathname === '/ring' ? `2px solid ${txtColor}` : ''
+                    borderBottom: location.pathname === '/saree' ? `2px solid ${txtColor}` : ''
                   }}
                 >
                   SAREES
@@ -112,10 +112,10 @@ const Navbar = (props) => {
                   to="/dupatta"
                   style={{
                     color: txtColor,
-                    borderBottom: location.pathname === '/earring' ? `2px solid ${txtColor}` : ''
+                    borderBottom: location.pathname === '/dupatta' ? `2px solid ${txtColor}` : ''
                   }}
                 >
-                  DUPATTAS
+                  DRESS
                 </Link>
               </li>
               <li className="nav-item">
@@ -125,7 +125,7 @@ const Navbar = (props) => {
                   to="/bag"
                   style={{
                     color: txtColor,
-                    borderBottom: location.pathname === '/nosering' ? `2px solid ${txtColor}` : ''
+                    borderBottom: location.pathname === '/bag' ? `2px solid ${txtColor}` : ''
                   }}
                 >
                   BAGS
@@ -138,7 +138,7 @@ const Navbar = (props) => {
                   to="/jewellery"
                   style={{
                     color: txtColor,
-                    borderBottom: location.pathname === '/bracelet' ? `2px solid ${txtColor}` : ''
+                    borderBottom: location.pathname === '/jewellery' ? `2px solid ${txtColor}` : ''
                   }}
                 >
                   JEWELLERY
