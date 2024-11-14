@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaTachometerAlt, FaProductHunt, FaUserCog, FaShoppingBag, FaBars, FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 import Sidebar from './Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 const ManageProducts = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -8,6 +9,7 @@ const ManageProducts = () => {
   const [products, setProducts] = useState([]);
   const [editMode, setEditMode] = useState(false);
   const [editProductId, setEditProductId] = useState(null); // Store the ID of the product being edited
+  const navigate = useNavigate();
 
   const sellerId = localStorage.getItem("sellerId");
 
@@ -26,6 +28,16 @@ const ManageProducts = () => {
     dimension: '',
     sellerId: sellerId
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const currentUserRole = localStorage.getItem('currentUserRole');
+    
+    if (!token || currentUserRole !== 'seller') {
+      alert("page doesn't exist")
+      navigate('/'); // Redirect to login if not authenticated or not a seller
+    }
+  }, [navigate]);
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);

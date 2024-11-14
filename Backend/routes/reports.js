@@ -64,6 +64,9 @@ router.get('/getreports', fetchuser, async (req, res) => {
       const reports = await Report.find()
         .populate('productId', 'productName')  // Populate only the `name` field from the Product model
         .exec(); // Ensure the query is executed
+
+
+        console.log("sendin reports", reports);
   
       res.status(200).json(reports);
     } catch (error) {

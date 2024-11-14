@@ -91,6 +91,86 @@ router.get("/festive", async (req, res) => {
     }
 });
 
+router.get("/bag", async (req, res) => {
+    let success = false;
+
+    try {
+        let product = await Products.find({ category: "Bag" });
+
+        if (!product) {
+            return res.status(400).json({ success, error: "No products" });
+        }
+
+        console.log(product);
+        success = true;
+        res.json({ success, product });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
+router.get("/dupatta", async (req, res) => {
+    let success = false;
+
+    try {
+        let product = await Products.find({ category: "Dupatta" });
+
+        if (!product) {
+            return res.status(400).json({ success, error: "No products" });
+        }
+
+        console.log(product);
+        success = true;
+        res.json({ success, product });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
+router.get("/saree", async (req, res) => {
+    let success = false;
+
+    try {
+        let product = await Products.find({ category: "Saree" });
+
+        if (!product) {
+            return res.status(400).json({ success, error: "No products" });
+        }
+
+        console.log(product);
+        success = true;
+        res.json({ success, product });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
+router.get("/jewellery", async (req, res) => {
+    let success = false;
+
+    try {
+        let product = await Products.find({ category: "Jewellery" });
+
+        if (!product) {
+            return res.status(400).json({ success, error: "No products" });
+        }
+
+        console.log(product);
+        success = true;
+        res.json({ success, product });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ error: "Internal Server Error" });
+    }
+});
+
 // ----ROUTE 3: Editing the product; POST "/api/products/updateproduct". -----
 router.post("/updateproduct/:id", async (req, res) => {
     const { imageUrl, productName, description, price, category, stockQuantity, material, weight, dimension, sellerId } = req.body;

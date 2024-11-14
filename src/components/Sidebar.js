@@ -3,23 +3,17 @@ import { FaTachometerAlt, FaProductHunt, FaUserCog, FaShoppingBag, FaSignOutAlt 
 import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-    // Get the current user role from localStorage
     const currentUserRole = localStorage.getItem('currentUserRole');
     const navigate = useNavigate();
 
-
     const handleLogout = () => {
-        console.log("came in logout")
+        console.log("Came into logout");
         localStorage.removeItem('username');
         localStorage.removeItem('token');
         localStorage.removeItem('currentUserRole');
-
-        const token = localStorage.getItem('token');
-
-        if(!token){
-        navigate("/login"); 
-        }
-      };
+        
+        navigate("/login");
+    };
 
     const sidebarStyle = {
         width: '250px',
@@ -55,116 +49,40 @@ const Sidebar = () => {
         color: '#6D2932',
     };
 
-    console.log("in sidebar", currentUserRole);
-
     return (
         <div>
             <div style={sidebarStyle}>
                 {currentUserRole === 'seller' ? (
-                    // Seller Sidebar
                     <>
-                        {/* <Link
-                            to="/sellerDashboard"
-                            style={linkStyle}
-                            onMouseEnter={(e) => {
-                                e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                                e.target.style.color = linkHoverStyle.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.backgroundColor = '';
-                                e.target.style.color = linkStyle.color;
-                            }}
-                        >
-                            <FaTachometerAlt /> Dashboard
-                        </Link> */}
-                        <Link
-                            to="/manageProducts"
-                            style={linkStyle}
-                            onMouseEnter={(e) => {
-                                e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                                e.target.style.color = linkHoverStyle.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.backgroundColor = '';
-                                e.target.style.color = linkStyle.color;
-                            }}
-                        >
+                        <Link to="/manageProducts" style={linkStyle}>
                             <FaProductHunt /> Manage Products
                         </Link>
-                        <Link
-                            to="/"
-                            style={linkStyle}
-                            onMouseEnter={(e) => {
-                                e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                                e.target.style.color = linkHoverStyle.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.backgroundColor = '';
-                                e.target.style.color = linkStyle.color;
-                            }}
-                        >
+                        <Link to="/" style={linkStyle}>
                             <FaShoppingBag /> Explore
                         </Link>
                     </>
                 ) : (
-                    // Default to Admin Sidebar
                     <>
-                        {/* <Link
-                            to="/adminDashboard"
-                            style={linkStyle}
-                            onMouseEnter={(e) => {
-                                e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                                e.target.style.color = linkHoverStyle.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.backgroundColor = '';
-                                e.target.style.color = linkStyle.color;
-                            }}
-                        >
-                            <FaTachometerAlt /> Dashboard
-                        </Link> */}
-                        <Link
-                            to="/manageSellers"
-                            style={linkStyle}
-                            onMouseEnter={(e) => {
-                                e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                                e.target.style.color = linkHoverStyle.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.backgroundColor = '';
-                                e.target.style.color = linkStyle.color;
-                            }}
-                        >
+                        <Link to="/manageSellers" style={linkStyle}>
                             <FaUserCog /> Manage Sellers
                         </Link>
-                        <Link
-                            to="/manageReports"
-                            style={linkStyle}
-                            onMouseEnter={(e) => {
-                                e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                                e.target.style.color = linkHoverStyle.color;
-                            }}
-                            onMouseLeave={(e) => {
-                                e.target.style.backgroundColor = '';
-                                e.target.style.color = linkStyle.color;
-                            }}
-                        >
+                        <Link to="/manageReports" style={linkStyle}>
                             <FaUserCog /> Reports
                         </Link>
-                        <Link
-                          onClick={handleLogout}
-                          style={linkStyle}
-                          onMouseEnter={(e) => {
-                              e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
-                              e.target.style.color = linkHoverStyle.color;
-                          }}
-                          onMouseLeave={(e) => {
-                              e.target.style.backgroundColor = '';
-                              e.target.style.color = linkStyle.color;
-                          }}
+                        <button
+                            onClick={handleLogout}
+                            style={{ backgroundColor:'#FFE7E7', cursor: 'pointer' }}
+                            // onMouseEnter={(e) => {
+                            //     e.target.style.backgroundColor = linkHoverStyle.backgroundColor;
+                            //     e.target.style.color = linkHoverStyle.color;
+                            // }}
+                            // onMouseLeave={(e) => {
+                            //     e.target.style.backgroundColor = '';
+                            //     e.target.style.color = linkStyle.color;
+                            // }}
                         >
-                          <FaSignOutAlt /> Logout
-                        </Link>
+                            <FaSignOutAlt /> Logout
+                        </button>
                     </>
                 )}
             </div>

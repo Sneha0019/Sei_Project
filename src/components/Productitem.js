@@ -119,7 +119,7 @@ const Productitem = (props) => {
           
           {/* Price */}
           <p className="card-text" style={{ fontSize: '1rem', marginBottom: '0.2rem' }}>
-            ${product.price}
+          ₹{product.price}
           </p>
           
           {/* Add to Cart Button */}

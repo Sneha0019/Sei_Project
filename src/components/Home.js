@@ -12,10 +12,11 @@ const Home =() => {
   </div>
   <div className="carousel-inner" style={{ borderRadius: 5, maxHeight: '500px', overflow: 'hidden' }}>
     <div className="carousel-item active">
-      <img src={require('../Images/jewellery.png')} className="d-block w-100" alt="..." />
+    
+      <img src={require('../Images/handloom.png')} className="d-block w-100" alt="..." />
     </div>
     <div className="carousel-item">
-      <img src={require('../Images/handloom.png')} className="d-block w-100" alt="..." />
+      <img src={require('../Images/jewellery.png')} className="d-block w-100" alt="..." />
     </div>
     <div className="carousel-item">
       <img src={require('../Images/saree.png')} className="d-block w-100" alt="..." />

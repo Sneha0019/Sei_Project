@@ -17,8 +17,10 @@ const ReportAdmin = () => {
           }
         });
         const data = await response.json();
+        console.log(data);
         if (response.ok) {
           setReports(data);
+          console.log(reports);
         } else {
           console.error('Failed to fetch reports:', data.message);
         }

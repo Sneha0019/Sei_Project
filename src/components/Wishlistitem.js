@@ -73,7 +73,7 @@ const Wishlistitem = (props) => {
           
           {/* Price */}
           <p className="card-text" style={{ fontSize: '1rem', marginBottom: '0.2rem' }}>
-            ${wishlistProduct.items[0].price}
+            ₹{wishlistProduct.items[0].price}
           </p>
           
           {/* Add to Cart Button */}

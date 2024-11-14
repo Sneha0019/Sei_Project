@@ -1,9 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
+import { useNavigate } from 'react-router-dom';
 
 const SellerVerification = () => {
   const [requests, setRequests] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const currentUserRole = localStorage.getItem('currentUserRole');
+    
+    if (!token || currentUserRole !== 'admin') {
+      alert("page doesn't exist");
+      navigate('/login'); // Redirect to login if not authenticated or not a seller
+    }
+  }, [navigate]);
 
   useEffect(() => {
     // Fetch seller data from the API

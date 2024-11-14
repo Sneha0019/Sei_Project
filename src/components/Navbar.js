@@ -36,8 +36,11 @@ const Navbar = (props) => {
   // Handle Seller Dashboard Navigation
  // Handle Seller Dashboard Navigation
 const handleClickForSeller = () => {
-  const currentUserRole = localStorage.getItem('role'); // Check stored key here
+  const currentUserRole = localStorage.getItem('currentUserRole'); // Check stored key here
+  console.log("in handleClickForSeller")
+  console.log(currentUserRole);
   if (currentUserRole === "seller") {
+    console.log("navigating to manageProducts")
     navigate("/manageProducts"); // Navigate to Seller Dashboard
   } else {
     navigate("/"); // Redirect elsewhere if not a seller
@@ -213,14 +216,15 @@ const handleClickForSeller = () => {
                     <>
                       {username && (
                         <li>
-                          <Link
-                            style={{ color: txtColor }}
-                            onClick={handleClickForSeller}
-                            className="dropdown-item"
-                          >
-                            {username}
-                          </Link>
-                        </li>
+                        <button
+                          style={{ color: txtColor, background: 'none', border: 'none' }}
+                          onClick={handleClickForSeller}
+                          className="dropdown-item"
+                        >
+                          {username}
+                        </button>
+                      </li>
+                      
                       )}
                       <li>
                         <Link

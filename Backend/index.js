@@ -4,16 +4,11 @@ var cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept, auth-token"
-    );
-    res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE"); 
-    res.header("Access-Control-Allow-Credentials", "true");
-    next();
-});
+app.use(cors({
+  origin: "http://localhost:3000",  // Set this to the URL of your frontend
+  methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
+  credentials: true, // Allow credentials if needed
+}));
 
 
 app.use(express.json());

@@ -86,9 +86,9 @@ const OrderSummary = (props) => {
                         </div>
 
                         <div className="container text-flex-end">
-                            <p>$ {calPrice}</p>
-                            <p>$ {deliveryFee}</p>
-                            <h6 style={{ color: txtColor }}>$ {calPrice+deliveryFee}</h6>
+                            <p>₹ {calPrice}</p>
+                            <p>₹ {deliveryFee}</p>
+                            <h6 style={{ color: txtColor }}>₹ {calPrice+deliveryFee}</h6>
                         </div>
                     </div>
                 </div>
